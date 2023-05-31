@@ -1,0 +1,109 @@
+#include<iostream>
+#include <string>
+
+class category
+{
+public:
+	int category_id;
+	std::string category_n;
+	category(int category_id, std::string category_n)
+	{
+		this->category_id = category_id;
+		this->category_n = category_n;
+	};
+	category()
+	{
+	};
+	void data(int id,std::string n)
+	{
+		category_id = id;
+		category_n = n;
+	}
+};
+class brand
+{
+public:
+	int brand_id;
+	std::string brand_n;
+	brand(int brand_id, std::string brand_n)
+	{
+		this->brand_id = brand_id;
+		this->brand_n = brand_n;
+	};
+	brand()
+	{
+	};
+	void data(int id, std::string n)
+	{
+		brand_id = id;
+		brand_n = n;
+	}
+};
+
+
+class product 
+{
+public:
+	
+	int id, category_id, brand_id;
+	std::string name;
+	product(int id, std::string name, int category_id, int brand_id)
+	{
+		this->id = id;
+		this->name = name;
+		this->category_id = category_id;
+		this->brand_id = brand_id;
+	}
+	product()
+	{
+	}
+	void data(int ID,std::string n,int  c_id,int b_id)
+	{
+		id = ID;
+		name = n;
+		category_id = c_id;
+		brand_id = b_id;
+	};
+};
+std::string tab(std::string str) {
+	int size = str.size();
+	while (str.size() < 20)
+	{
+		str += " ";
+	}
+	return str;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	product products[10];
+	category categoys[3];
+	brand brands[3];
+
+	categoys[0].data(0, "канцелярия");
+	categoys[1].data(1, "электроника");
+	categoys[2].data(2, "одежда");
+
+	brands[0].data(0, "калоши у гоши");
+	brands[1].data(1, "fihs and parigh");
+	brands[2].data(2, "smsung");
+
+	products[0].data(0, "ручка", 0, 0);
+	products[1].data(1, "карандаш", 0, 0);
+	products[2].data(2, "ноутбук", 1, 1);
+	products[3].data(3, "телефон", 1, 1);
+	products[4].data(4, "трость", 2, 2);
+	products[5].data(5, "кепка", 2, 1);
+	products[6].data(6, "кофта", 2, 2);
+	products[7].data(7, "футболка", 2, 0);
+	products[8].data(8, "микроволновка", 1, 2);
+	products[9].data(9, "холодильник", 1, 1);
+
+	std::cout << tab("название: ") << tab("категория: ") << tab("бренд: ") << std::endl;
+	for (int i = 0; i < 10; i++)
+	{
+		std::cout << tab(products[i].name)  << tab(categoys[products[i].category_id].category_n) << tab(brands[products[i].brand_id].brand_n) << std::endl;
+	}
+
+}
